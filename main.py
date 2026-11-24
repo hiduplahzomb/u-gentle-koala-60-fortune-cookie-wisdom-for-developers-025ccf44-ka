@@ -2,25 +2,27 @@
 """Fortune Cookie Wisdom for Developers.
 
 Writes one original fortune-cookie line to /output/entry.txt: a
-Friday-afternoon deploy fortune, in the classic "You will..." cookie
-voice. The truth is the timing — Friday 4:59 PM ships, Monday 9:03 AM
-is when the bug introduces itself — a tired senior engineer has lived
-this exact week. Two concrete times carry the joke; no cliché, no
-lecture, just the schedule.
+meeting-about-the-fix fortune, in the classic "You will..." cookie
+voice. The truth is the ratio — the bug takes 4 minutes to fix, the
+meeting about the fix takes 2 hours — a tired senior engineer has
+lived this exact day. The punchline is the 30-to-1 ratio of talking
+about the work to doing the work; no cliché, no lecture, just the
+schedule.
 """
 
 import os
 import sys
 
 TEXT = (
-    "You will ship on Friday at 4:59 PM. The bug will introduce "
-    "itself Monday at 9:03 AM."
+    "You will fix the bug in 4 minutes. The meeting about the fix "
+    "will take 2 hours."
 )
 
 
 def main() -> int:
     # Gate: 1 to 120 characters, counted as Unicode code points,
-    # and not only white space.
+    # and not only white space. The joke hangs on the 4-minute vs
+    # 2-hour contrast, so both numbers must survive intact.
     if not (1 <= len(TEXT) <= 120) or not TEXT.strip():
         print("entry text fails the 1-120 gate", file=sys.stderr)
         return 1
